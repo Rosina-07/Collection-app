@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Car extends Model
 {
     use HasFactory;
-    public $hidden = ['created_at' , 'updated_at'];
+
+    public $hidden = ['created_at', 'updated_at'];
 }

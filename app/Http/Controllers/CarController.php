@@ -9,12 +9,20 @@ class CarController extends Controller
 {
     public function all(Request $request)
     {
+        $search = $request->search;
 
-        return response()->json([
-            'message' => 'Cars Returned',
-            'data' => Car::all()
-        ]);
-    }
+            if ($search) {
+                return response()->json([
+                    'message' => 'Cars returned',
+                    'data' => Car::where('model', 'LIKE', "%$search%")->get()
+                ]);
+            }
+
+            return response()->json([
+                'message' => 'Cars Returned',
+                'data' => Car::all(),
+                ]);
+            }
 
     public function find(int $id)
     {
