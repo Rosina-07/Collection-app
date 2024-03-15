@@ -12,7 +12,7 @@ class CarController extends Controller
 
         return response()->json([
             'message' => 'Cars Returned',
-            'data' => Car::all(),
+            'data' => Car::all()
         ]);
     }
 
