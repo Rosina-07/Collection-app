@@ -20,9 +20,9 @@ class CarController extends Controller
 
             return response()->json([
                 'message' => 'Cars Returned',
-                'data' => Car::all(),
+                'data' => Car::all()->sortBy('model', SORT_REGULAR, true)
                 ]);
-            }
+    }
 
     public function find(int $id)
     {
@@ -47,8 +47,6 @@ class CarController extends Controller
         $car->year = $request->year;
         $car->mileage = $request->mileage;
         $car->cute = $request->cute;
-
-        $car->save();
 
         if (! $car->save()) {
             return response()->json(['message' => 'Car not Created'], 500);
@@ -75,8 +73,6 @@ class CarController extends Controller
         $car->year = $request->year;
         $car->mileage = $request->mileage;
         $car->cute = $request->cute;
-
-        $car->save();
 
         if (! $car->save()) {
             return response()->json(['message' => 'Car not updated'], 500);
